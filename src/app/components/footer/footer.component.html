@@ -1,0 +1,90 @@
+<footer class="footer" id="footer">
+  <div class="footer-top">
+    <div class="container footer-grid">
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <span class="logo-t">T</span><span class="logo-f">F</span>
+          </div>
+          <div>
+            <div class="footer-brand-name">TRYAXEL FORGE</div>
+            <div class="footer-brand-tag">Forging Intelligence Beyond Tomorrow</div>
+          </div>
+        </div>
+        <p class="footer-desc">
+          We don't just build websites — we create powerful digital solutions that help businesses grow.
+          Your vision, forged into reality.
+        </p>
+        <div class="footer-contact-quick">
+          <a href="tel:+263786795902" class="footer-contact-item" id="footer-phone">
+            <i class="fa-solid fa-phone"></i> +263 786 795 902
+          </a>
+          <a href="mailto:info@tryaxelforge.co.zw" class="footer-contact-item" id="footer-email">
+            <i class="fa-solid fa-envelope"></i> info&#64;tryaxelforge.co.zw
+          </a>
+          <a href="https://www.tryaxelforge.co.zw" class="footer-contact-item" id="footer-web">
+            <i class="fa-solid fa-globe"></i> www.tryaxelforge.co.zw
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Quick Links</h4>
+        <ul class="footer-links">
+          @for (link of navLinks; track link.fragment) {
+            <li>
+              <button class="footer-link" (click)="scrollTo(link.fragment)" [id]="'footer-nav-' + link.fragment">
+                <i class="fa-solid fa-chevron-right footer-chevron"></i> {{ link.label }}
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Services</h4>
+        <ul class="footer-links">
+          @for (svc of services; track svc) {
+            <li><span class="footer-list-item"><i class="fa-solid fa-chevron-right footer-chevron"></i> {{ svc }}</span></li>
+          }
+        </ul>
+      </div>
+
+      <!-- Social -->
+      <div class="footer-col">
+        <h4 class="footer-col-title">Connect With Us</h4>
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/simbarashe.sandi.5" class="footer-social-btn" id="footer-facebook" target="_blank" rel="noopener" style="--social-color:#1877F2">
+            <i class="fa-brands fa-facebook-f"></i> Facebook
+          </a>
+          <a href="https://www.linkedin.com/in/simbarashe-sandi/" class="footer-social-btn" id="footer-linkedin" target="_blank" rel="noopener" style="--social-color:#0A66C2">
+            <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+          </a>
+          <a href="https://wa.me/263786795902" class="footer-social-btn" id="footer-whatsapp" target="_blank" rel="noopener" style="--social-color:#25D366">
+            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+          </a>
+          <a href="mailto:info@tryaxelforge.co.zw" class="footer-social-btn" id="footer-mail-btn" style="--social-color:#FF6B00">
+            <i class="fa-solid fa-envelope"></i> Email Us
+          </a>
+        </div>
+
+        <div class="footer-core-values">
+          <div class="footer-value"><i class="fa-solid fa-shield-halved"></i> Secure</div>
+          <div class="footer-value"><i class="fa-solid fa-chart-line"></i> Scalable</div>
+          <div class="footer-value"><i class="fa-solid fa-bolt"></i> High Performance</div>
+          <div class="footer-value"><i class="fa-solid fa-headset"></i> 24/7 Support</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container footer-bottom-inner">
+      <p>© {{ currentYear }} Tryaxel Forge. All rights reserved.</p>
+      <p class="footer-built">Built with <i class="fa-solid fa-heart" style="color:#FF6B00"></i> by Tryaxel Forge</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,55 @@
+<section class="about section-alt" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <!-- Left: Text -->
+      <div class="about-text">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">Building <span>Digital Futures</span><br>That Matter</h2>
+        <p class="about-desc">
+          Tryaxel Forge is a cutting-edge technology company based in Zimbabwe, dedicated to forging
+          powerful digital solutions that drive business growth. We combine technical excellence with
+          creative innovation to deliver results that exceed expectations.
+        </p>
+        <p class="about-desc">
+          From custom web applications to AI-powered systems, we partner with businesses of all sizes
+          to bring their digital vision to life. Our team is passionate about technology and committed
+          to your success.
+        </p>
+
+        <div class="about-mission">
+          <i class="fa-solid fa-fire mission-icon"></i>
+          <div>
+            <strong>Our Mission</strong>
+            <p>To empower businesses through intelligent, scalable and impactful digital solutions — forging tomorrow's technology today.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Values Grid -->
+      <div class="about-right">
+        <div class="values-grid">
+          @for (value of values; track value.title) {
+            <div class="value-card card">
+              <i [class]="value.icon + ' value-icon'"></i>
+              <h3 class="value-title">{{ value.title }}</h3>
+              <p class="value-desc">{{ value.desc }}</p>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+
+    <!-- Tech Stack -->
+    <div class="tech-section">
+      <div class="section-label">Technologies We Use</div>
+      <div class="tech-grid">
+        @for (tech of technologies; track tech.name) {
+          <div class="tech-badge">
+            <i [class]="tech.devicon + ' tech-icon'"></i>
+            <span class="tech-name">{{ tech.name }}</span>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</section>

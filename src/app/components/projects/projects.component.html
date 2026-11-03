@@ -1,0 +1,89 @@
+<section class="projects" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Portfolio</div>
+      <h2 class="section-title">Our <span>Projects</span></h2>
+      <p class="section-subtitle">
+        From concept to deployment — see what we've built and what we're forging next.
+      </p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-wrapper">
+      <div class="tabs">
+        <button class="tab-btn" [class.active]="activeTab() === 'completed'" (click)="setTab('completed')" id="tab-completed">
+          ✅ Completed
+        </button>
+        <button class="tab-btn" [class.active]="activeTab() === 'ongoing'" (click)="setTab('ongoing')" id="tab-ongoing">
+          🔄 Ongoing
+        </button>
+        <button class="tab-btn" [class.active]="activeTab() === 'upcoming'" (click)="setTab('upcoming')" id="tab-upcoming">
+          🚀 Upcoming
+        </button>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects; track project.id) {
+        <div class="project-card card" [id]="project.id + '-card'">
+          <!-- Project Image -->
+          @if (project.imageUrl) {
+            <div class="project-image">
+              <img [src]="project.imageUrl" [alt]="project.title + ' preview'" loading="lazy">
+              <div class="project-image-overlay">
+                @if (project.url) {
+                  <button class="btn btn-primary btn-sm" [id]="project.id + '-visit'" (click)="visitProject(project.url!)">
+                    🌐 Visit Site
+                  </button>
+                }
+              </div>
+            </div>
+          }
+
+          <div class="project-body">
+            <div class="project-meta">
+              <span class="project-client">{{ project.client }}</span>
+              @switch (project.status) {
+                @case ('completed') { <span class="badge badge-green">✅ Completed</span> }
+                @case ('ongoing')   { <span class="badge badge-orange">🔄 Ongoing</span> }
+                @case ('upcoming')  { <span class="badge badge-blue">🚀 Upcoming</span> }
+              }
+            </div>
+
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-desc">{{ project.desc }}</p>
+
+            <div class="project-tags">
+              @for (tag of project.tags; track tag) {
+                <span class="project-tag">{{ tag }}</span>
+              }
+            </div>
+
+            <div class="project-actions">
+              <button
+                class="btn btn-outline btn-sm"
+                [id]="project.id + '-inquire'"
+                (click)="openInquiry(project)"
+              >
+                Inquire →
+              </button>
+              @if (project.url) {
+                <button class="btn btn-primary btn-sm" [id]="project.id + '-live'" (click)="visitProject(project.url!)">
+                  🔗 View Live
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      }
+
+      @if (filteredProjects.length === 0) {
+        <div class="empty-state">
+          <div class="empty-icon">🔍</div>
+          <p>No projects in this category yet.</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

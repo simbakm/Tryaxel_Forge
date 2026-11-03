@@ -1,0 +1,72 @@
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">What We Offer</div>
+      <h2 class="section-title">Our <span>Services</span></h2>
+      <p class="section-subtitle">
+        End-to-end digital services to power your business. From concept to deployment — we've got you covered.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      @for (service of services; track service.id) {
+        <div class="service-card card" [id]="service.id + '-card'">
+          <div class="icon-wrap">
+            <i [class]="service.faIcon + ' svc-icon'"></i>
+          </div>
+          <h3 class="service-title">{{ service.title }}</h3>
+          <p class="service-desc">{{ service.desc }}</p>
+          <button
+            class="btn btn-outline btn-sm inquire-btn"
+            [id]="service.id + '-inquire'"
+            (click)="openInquiry(service)"
+          >
+            Inquire Now <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      }
+    </div>
+
+    <!-- Pricing Teaser -->
+    <div class="pricing-teaser">
+      <div class="pricing-card">
+        <div class="pricing-icon">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+        <div class="pricing-content">
+          <div class="pricing-label">Website Development & Hosting</div>
+          <div class="pricing-sub">with Custom .co.zw Domain</div>
+          <div class="pricing-amount">From <span>US$120</span></div>
+        </div>
+        <div class="pricing-features">
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>.co.zw domain (1st Year FREE)</div>
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>5 Custom Emails (Forever FREE)</div>
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>Reliable Hosting</div>
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>Responsive Website</div>
+        </div>
+        <button class="btn btn-primary" id="pricing-website-inquire" (click)="openInquiry(services[0])">
+          Get Started
+        </button>
+      </div>
+      <div class="pricing-card">
+        <div class="pricing-icon">
+          <i class="fa-solid fa-code"></i>
+        </div>
+        <div class="pricing-content">
+          <div class="pricing-label">Web Application Development</div>
+          <div class="pricing-sub">Custom Business Solutions</div>
+          <div class="pricing-amount">From <span>US$200</span></div>
+        </div>
+        <div class="pricing-features">
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>Custom Design & Development</div>
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>Database Integration</div>
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>Admin Dashboard</div>
+          <div><i class="fa-solid fa-check" style="color:#FF6B00;margin-right:.4rem"></i>3 Months Free Support</div>
+        </div>
+        <button class="btn btn-primary" id="pricing-webapp-inquire" (click)="openInquiry(services[1])">
+          Get Started
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

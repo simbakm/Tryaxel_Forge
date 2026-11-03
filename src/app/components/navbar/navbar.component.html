@@ -1,0 +1,88 @@
+<nav class="navbar" [class.scrolled]="scrolled()">
+  <div class="nav-container">
+    <!-- Logo -->
+    <button class="nav-logo" (click)="scrollTo('hero')" id="nav-logo-btn">
+      <div class="logo-icon">
+        <span class="logo-t">T</span><span class="logo-f">F</span>
+      </div>
+      <div class="logo-text">
+        <span class="logo-name">TRYAXEL</span>
+        <span class="logo-forge">FORGE</span>
+      </div>
+    </button>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" role="navigation" aria-label="Main Navigation">
+      @for (link of navLinks; track link.id) {
+        <li>
+          <button
+            class="nav-link"
+            [class.active]="activeSection() === link.fragment"
+            [id]="link.id"
+            (click)="scrollTo(link.fragment)"
+          >{{ link.label }}</button>
+        </li>
+      }
+    </ul>
+
+    <!-- CTA -->
+    <button class="btn btn-primary btn-sm nav-cta" id="nav-cta-btn" (click)="scrollTo('contact')">
+      Get A Quote
+    </button>
+
+    <!-- Hamburger -->
+    <button
+      class="hamburger"
+      [class.open]="drawerOpen()"
+      (click)="toggleDrawer()"
+      id="hamburger-btn"
+      aria-label="Toggle navigation menu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer Overlay -->
+<div
+  class="drawer-overlay"
+  [class.active]="drawerOpen()"
+  (click)="closeDrawer()"
+></div>
+
+<!-- Mobile Drawer -->
+<aside class="drawer" [class.open]="drawerOpen()" id="mobile-drawer" role="dialog" aria-label="Navigation drawer">
+  <div class="drawer-header">
+    <div class="drawer-logo">
+      <span class="logo-t">T</span><span class="logo-f">F</span>
+    </div>
+    <div>
+      <div class="drawer-brand">TRYAXEL FORGE</div>
+      <div class="drawer-tagline">Forging Intelligence Beyond Tomorrow</div>
+    </div>
+    <button class="drawer-close" (click)="closeDrawer()" id="drawer-close-btn" aria-label="Close drawer">✕</button>
+  </div>
+
+  <nav class="drawer-nav">
+    @for (link of navLinks; track link.id) {
+      <button
+        class="drawer-link"
+        [class.active]="activeSection() === link.fragment"
+        [id]="'drawer-' + link.id"
+        (click)="scrollTo(link.fragment)"
+      >
+        <span class="drawer-link-icon">›</span>
+        {{ link.label }}
+      </button>
+    }
+  </nav>
+
+  <div class="drawer-footer">
+    <button class="btn btn-primary" (click)="scrollTo('contact')" id="drawer-cta-btn" style="width:100%;justify-content:center;">
+      Get A Quote
+    </button>
+    <p class="drawer-contact">📞 +263 786 795 902</p>
+  </div>
+</aside>

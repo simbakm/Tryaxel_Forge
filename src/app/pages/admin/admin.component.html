@@ -1,0 +1,191 @@
+<div class="admin-layout">
+  <!-- Sidebar -->
+  <aside class="admin-sidebar">
+    <div class="admin-logo">
+      <div class="logo-icon">
+        <span class="logo-t">T</span><span class="logo-f">F</span>
+      </div>
+      <div>
+        <div class="admin-brand">TRYAXEL FORGE</div>
+        <div class="admin-sub">Admin Dashboard</div>
+      </div>
+    </div>
+
+    <nav class="admin-nav">
+      <button class="admin-nav-item" [class.active]="activeTab() === 'dashboard'" (click)="setTab('dashboard')" id="admin-tab-dashboard">
+        📊 Dashboard
+      </button>
+      <button class="admin-nav-item" [class.active]="activeTab() === 'projects'" (click)="setTab('projects')" id="admin-tab-projects">
+        📁 Projects
+      </button>
+      <button class="admin-nav-item" [class.active]="activeTab() === 'services'" (click)="setTab('services')" id="admin-tab-services">
+        ⚙️ Services
+      </button>
+      <button class="admin-nav-item" [class.active]="activeTab() === 'products'" (click)="setTab('products')" id="admin-tab-products">
+        📦 Products
+      </button>
+      <button class="admin-nav-item" [class.active]="activeTab() === 'team'" (click)="setTab('team')" id="admin-tab-team">
+        👥 Team
+      </button>
+    </nav>
+
+    <div class="admin-sidebar-footer">
+      <a routerLink="/" class="admin-nav-item" id="admin-back-home">
+        🏠 Back to Website
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="admin-main">
+    <!-- Header -->
+    <div class="admin-header">
+      <div>
+        <h1 class="admin-title">
+          @switch (activeTab()) {
+            @case ('dashboard') { Overview Dashboard }
+            @case ('projects')  { Manage Projects }
+            @case ('services')  { Manage Services }
+            @case ('products')  { Manage Products }
+            @case ('team')      { Manage Team }
+          }
+        </h1>
+        <p class="admin-subtitle">Tryaxel Forge Content Management</p>
+      </div>
+      <div class="admin-header-badge">
+        <span class="pulse-dot"></span>
+        Backend Coming Soon
+      </div>
+    </div>
+
+    <!-- === DASHBOARD === -->
+    @if (activeTab() === 'dashboard') {
+      <div class="admin-content">
+        <div class="stats-grid">
+          @for (stat of stats; track stat.label) {
+            <div class="stat-card" [style.border-color]="stat.color + '33'">
+              <div class="stat-card-icon" [style.background]="stat.color + '15'" [style.color]="stat.color">
+                {{ stat.icon }}
+              </div>
+              <div>
+                <div class="stat-card-value" [style.color]="stat.color">{{ stat.value }}</div>
+                <div class="stat-card-label">{{ stat.label }}</div>
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="admin-notice card">
+          <div class="notice-icon">🔧</div>
+          <div>
+            <h3>Backend Integration Pending</h3>
+            <p>This admin dashboard is ready for backend integration. Once connected, you'll be able to create, edit and delete content that dynamically updates the website. All data shown is placeholder.</p>
+          </div>
+        </div>
+
+        <div class="recent-section">
+          <h2 class="section-mini-title">Recent Projects</h2>
+          <div class="admin-table">
+            @for (proj of mockProjects; track proj.title) {
+              <div class="table-row">
+                <span class="table-cell-main">{{ proj.title }}</span>
+                <span class="table-cell">{{ proj.client }}</span>
+                <span class="badge" [class]="getStatusClass(proj.status)">{{ proj.status }}</span>
+              </div>
+            }
+          </div>
+        </div>
+      </div>
+    }
+
+    <!-- === PROJECTS === -->
+    @if (activeTab() === 'projects') {
+      <div class="admin-content">
+        <div class="admin-toolbar">
+          <h2 class="section-mini-title">All Projects ({{ mockProjects.length }})</h2>
+          <button class="btn btn-primary btn-sm" id="admin-add-project" disabled>+ Add Project</button>
+        </div>
+        <div class="admin-table">
+          @for (proj of mockProjects; track proj.title) {
+            <div class="table-row">
+              <span class="table-cell-main">{{ proj.title }}</span>
+              <span class="table-cell">{{ proj.client }}</span>
+              <span class="badge" [class]="getStatusClass(proj.status)">{{ proj.status }}</span>
+              <div class="table-actions">
+                <button class="btn btn-outline btn-sm" disabled>Edit</button>
+                <button class="btn btn-sm delete-btn" disabled>Delete</button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- === SERVICES === -->
+    @if (activeTab() === 'services') {
+      <div class="admin-content">
+        <div class="admin-toolbar">
+          <h2 class="section-mini-title">Services ({{ mockServices.length }})</h2>
+          <button class="btn btn-primary btn-sm" id="admin-add-service" disabled>+ Add Service</button>
+        </div>
+        <div class="admin-table">
+          @for (svc of mockServices; track svc) {
+            <div class="table-row">
+              <span class="table-cell-main">{{ svc }}</span>
+              <div class="table-actions">
+                <button class="btn btn-outline btn-sm" disabled>Edit</button>
+                <button class="btn btn-sm delete-btn" disabled>Delete</button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- === PRODUCTS === -->
+    @if (activeTab() === 'products') {
+      <div class="admin-content">
+        <div class="admin-toolbar">
+          <h2 class="section-mini-title">Products ({{ mockProducts.length }})</h2>
+          <button class="btn btn-primary btn-sm" id="admin-add-product" disabled>+ Add Product</button>
+        </div>
+        <div class="admin-table">
+          @for (prod of mockProducts; track prod.name) {
+            <div class="table-row">
+              <span class="table-cell-main">{{ prod.name }}</span>
+              <span class="table-cell">{{ prod.tagline }}</span>
+              <span class="badge badge-silver">{{ prod.status }}</span>
+              <div class="table-actions">
+                <button class="btn btn-outline btn-sm" disabled>Edit</button>
+                <button class="btn btn-sm delete-btn" disabled>Delete</button>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <!-- === TEAM === -->
+    @if (activeTab() === 'team') {
+      <div class="admin-content">
+        <div class="admin-toolbar">
+          <h2 class="section-mini-title">Team Members (1)</h2>
+          <button class="btn btn-primary btn-sm" id="admin-add-member" disabled>+ Add Member</button>
+        </div>
+        <div class="member-admin-card card">
+          <div style="display:flex;align-items:center;gap:1rem;">
+            <img src="assets/images/simbarashe.jpg" alt="Simbarashe Sandi" style="width:64px;height:64px;border-radius:50%;object-fit:cover;border:2px solid var(--orange);">
+            <div>
+              <div style="font-family:var(--font-heading);font-size:1rem;font-weight:700;letter-spacing:0.05em;">Simbarashe Sandi</div>
+              <div style="color:var(--orange);font-size:0.85rem;font-family:var(--font-ui);font-weight:600;">Founder & CEO · Software Engineer</div>
+              <div style="color:var(--text-muted);font-size:0.8rem;margin-top:0.2rem;">HIT · First Class Honours in Software Engineering</div>
+            </div>
+          </div>
+          <div class="table-actions" style="margin-top:1rem;">
+            <button class="btn btn-outline btn-sm" disabled>Edit Profile</button>
+          </div>
+        </div>
+      </div>
+    }
+  </main>
+</div>

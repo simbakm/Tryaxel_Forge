@@ -1,0 +1,48 @@
+<section class="products section-alt" id="products">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Our Innovations</div>
+      <h2 class="section-title">Our <span>Products</span></h2>
+      <p class="section-subtitle">
+        We don't just build for clients — we build our own. Discover the intelligent products forged at Tryaxel Forge.
+      </p>
+    </div>
+
+    <div class="products-grid">
+      @for (product of products; track product.id) {
+        <div class="product-card card" [id]="product.id + '-card'">
+          <!-- Coming Soon Ribbon -->
+          @if (product.status === 'coming-soon') {
+            <div class="coming-soon-ribbon">Coming Soon</div>
+          }
+
+          <div class="product-header">
+            <div class="product-icon-wrap" [style.background]="'rgba(' + hexToRgb(product.color) + ', 0.1)'" [style.border-color]="'rgba(' + hexToRgb(product.color) + ', 0.3)'">
+              <span class="product-icon">{{ product.icon }}</span>
+            </div>
+            <div>
+              <h3 class="product-name">{{ product.name }}</h3>
+              <p class="product-tagline">{{ product.tagline }}</p>
+            </div>
+          </div>
+
+          <p class="product-desc">{{ product.desc }}</p>
+
+          <div class="product-features">
+            @for (feature of product.features; track feature) {
+              <span class="feature-tag">{{ feature }}</span>
+            }
+          </div>
+
+          <button
+            class="btn btn-outline btn-sm inquire-btn"
+            [id]="product.id + '-inquire'"
+            (click)="openInquiry(product)"
+          >
+            Register Interest →
+          </button>
+        </div>
+      }
+    </div>
+  </div>
+</section>

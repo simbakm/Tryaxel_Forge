@@ -1,0 +1,149 @@
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.about-desc {
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.about-mission {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--bg-glass-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-top: 2rem;
+}
+
+.mission-icon {
+  font-size: 1.75rem;
+  color: var(--orange);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.about-mission strong {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 0.5rem;
+}
+
+.about-mission p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Values Grid */
+.values-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.value-card {
+  padding: 1.5rem;
+}
+
+.value-icon {
+  font-size: 1.6rem;
+  color: var(--orange);
+  margin-bottom: 0.75rem;
+  display: block;
+  transition: var(--transition);
+}
+
+.value-card:hover .value-icon {
+  transform: scale(1.15);
+}
+
+.value-title {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.value-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Tech Stack */
+.tech-section {
+  border-top: 1px solid var(--border);
+  padding-top: 3rem;
+}
+
+.tech-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.tech-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.6rem 1.25rem;
+  transition: var(--transition);
+  cursor: default;
+}
+
+.tech-badge:hover {
+  border-color: var(--orange);
+  background: var(--bg-card-hover);
+  transform: translateY(-2px);
+}
+
+.tech-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.tech-name {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+}
+
+.tech-badge:hover .tech-name {
+  color: var(--text-primary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+}

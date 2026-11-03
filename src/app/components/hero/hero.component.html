@@ -1,0 +1,47 @@
+<section class="hero" id="hero">
+  <canvas #canvas class="hero-canvas"></canvas>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+
+  <div class="container hero-content">
+    <div class="hero-badge">
+      <span class="pulse-dot"></span>
+      Zimbabwe's Premier Tech Company
+    </div>
+
+    <h1 class="hero-title">
+      We Build<br>
+      <span class="hero-title-accent">{{ displayText }}<span class="cursor">|</span></span>
+    </h1>
+
+    <p class="hero-subtitle">
+      Powerful. Scalable. Secure. We deliver end-to-end digital solutions
+      for individuals, startups and enterprises worldwide.
+      <span class="hero-tagline">— Forging Intelligence Beyond Tomorrow</span>
+    </p>
+
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="hero-getstarted-btn" (click)="scrollTo('services')">
+        <span>🚀</span> Explore Services
+      </button>
+      <button class="btn btn-outline" id="hero-projects-btn" (click)="scrollTo('projects')">
+        View Our Work
+      </button>
+    </div>
+
+    <div class="hero-stats">
+      @for (stat of stats; track stat.label) {
+        <div class="stat-item">
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      }
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>

@@ -1,0 +1,234 @@
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem;
+}
+
+.section-header .section-label {
+  justify-content: center;
+}
+
+.section-header .section-label::before {
+  display: none;
+}
+
+.team-grid {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+}
+
+.member-card {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 3rem;
+  max-width: 900px;
+  width: 100%;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.member-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--orange), var(--orange-light), transparent);
+}
+
+.member-card:hover {
+  border-color: var(--border-hover);
+  box-shadow: var(--shadow-orange);
+}
+
+.member-photo-wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.member-photo {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--orange);
+  box-shadow: 0 0 30px rgba(255, 107, 0, 0.3);
+  display: block;
+}
+
+.member-photo-glow {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 107, 0, 0.2);
+  animation: pulse-orange 3s infinite;
+}
+
+.member-info {
+  flex: 1;
+}
+
+.member-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.member-name {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.member-role {
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--orange);
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.member-bio {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.member-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1.25rem;
+}
+
+.skill-tag {
+  background: var(--bg-glass-light);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 0.78rem;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.75rem;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.skill-tag:hover {
+  border-color: var(--orange);
+  color: var(--orange);
+}
+
+.member-socials {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  border-color: var(--social-color, var(--orange));
+  background: var(--bg-card-hover);
+  color: var(--social-color, var(--orange));
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px color-mix(in srgb, var(--social-color, var(--orange)) 30%, transparent);
+}
+
+/* Hiring Banner */
+.hiring-banner {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hiring-content {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hiring-icon {
+  font-size: 2.5rem;
+  flex-shrink: 0;
+}
+
+.hiring-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.hiring-content p {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .member-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+
+  .member-badges,
+  .member-skills,
+  .member-socials {
+    justify-content: center;
+  }
+
+  .hiring-banner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hiring-content {
+    flex-direction: column;
+  }
+
+  .hiring-banner .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

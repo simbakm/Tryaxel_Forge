@@ -1,0 +1,125 @@
+<section class="contact section-alt" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Build Something <span>Extraordinary</span></h2>
+      <p class="section-subtitle">
+        Ready to transform your digital presence? Reach out to us today and let's discuss your vision.
+      </p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <h3 class="contact-info-title">Contact Details</h3>
+
+        <div class="contact-methods">
+          @for (method of contactMethods; track method.label) {
+            <a class="contact-method" [href]="method.href" target="_blank" rel="noopener" [id]="'contact-' + method.label.toLowerCase().replace(' ', '-')">
+              <div class="contact-method-icon">{{ method.icon }}</div>
+              <div>
+                <div class="contact-method-label">{{ method.label }}</div>
+                <div class="contact-method-value">{{ method.value }}</div>
+              </div>
+            </a>
+          }
+        </div>
+
+        <div class="contact-callout">
+          <strong>🚀 Ready to get started?</strong>
+          <p>We respond to all inquiries within 24 hours. Your digital transformation starts with a single message.</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form card">
+        @if (submitted()) {
+          <div class="form-success">
+            <div class="success-icon">✅</div>
+            <h3>Message Sent!</h3>
+            <p>Your email client is opening with your message. We'll get back to you within 24 hours!</p>
+          </div>
+        } @else {
+          <h3 class="form-title">Send Us A Message</h3>
+          <form (ngSubmit)="submitForm()" #contactForm="ngForm" id="contact-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name">Full Name *</label>
+                <input
+                  id="name"
+                  type="text"
+                  class="form-control"
+                  [(ngModel)]="formData.name"
+                  name="name"
+                  placeholder="Your full name"
+                  required
+                >
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input
+                  id="email"
+                  type="email"
+                  class="form-control"
+                  [(ngModel)]="formData.email"
+                  name="email"
+                  placeholder="your@email.com"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Phone / WhatsApp</label>
+                <input
+                  id="phone"
+                  type="tel"
+                  class="form-control"
+                  [(ngModel)]="formData.phone"
+                  name="phone"
+                  placeholder="+263 XXX XXX XXX"
+                >
+              </div>
+              <div class="form-group">
+                <label for="service">Service Interested In</label>
+                <select
+                  id="service"
+                  class="form-control"
+                  [(ngModel)]="formData.service"
+                  name="service"
+                >
+                  <option value="">Select a service...</option>
+                  @for (svc of services; track svc) {
+                    <option [value]="svc">{{ svc }}</option>
+                  }
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Your Message *</label>
+              <textarea
+                id="message"
+                class="form-control"
+                [(ngModel)]="formData.message"
+                name="message"
+                placeholder="Tell us about your project..."
+                required
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary submit-btn"
+              id="contact-submit-btn"
+              [disabled]="!formData.name || !formData.email || !formData.message"
+            >
+              🚀 Send Message
+            </button>
+          </form>
+        }
+      </div>
+    </div>
+  </div>
+</section>
