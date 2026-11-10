@@ -4,38 +4,133 @@
   <div class="hero-glow"></div>
 
   <div class="container hero-content">
-    <div class="hero-badge">
-      <span class="pulse-dot"></span>
-      Zimbabwe's Premier Tech Company
-    </div>
-
-    <h1 class="hero-title">
-      We Build<br>
-      <span class="hero-title-accent">{{ displayText }}<span class="cursor">|</span></span>
-    </h1>
-
-    <p class="hero-subtitle">
-      Powerful. Scalable. Secure. We deliver end-to-end digital solutions
-      for individuals, startups and enterprises worldwide.
-      <span class="hero-tagline">— Forging Intelligence Beyond Tomorrow</span>
-    </p>
-
-    <div class="hero-actions">
-      <button class="btn btn-primary" id="hero-getstarted-btn" (click)="scrollTo('services')">
-        <span>🚀</span> Explore Services
-      </button>
-      <button class="btn btn-outline" id="hero-projects-btn" (click)="scrollTo('projects')">
-        View Our Work
-      </button>
-    </div>
-
-    <div class="hero-stats">
-      @for (stat of stats; track stat.label) {
-        <div class="stat-item">
-          <div class="stat-value">{{ stat.value }}</div>
-          <div class="stat-label">{{ stat.label }}</div>
+    <div class="hero-layout">
+      <!-- Left Column: Title, Subtitle, Actions, Stats -->
+      <div class="hero-left">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Zimbabwe's Premier Tech Company
         </div>
-      }
+
+        <h1 class="hero-title">
+          We Build<br>
+          <span class="hero-title-accent">Powerful Digital Solutions</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          Scalable, secure, and future-ready. We deliver end-to-end digital solutions
+          for individuals, startups, and enterprises worldwide.
+          <span class="hero-tagline">— Forging Intelligence Beyond Tomorrow</span>
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="hero-getstarted-btn" (click)="scrollTo('services')">
+            <span>🚀</span> Explore Services
+          </button>
+          <button class="btn btn-outline" id="hero-projects-btn" (click)="scrollTo('projects')">
+            View Our Work
+          </button>
+        </div>
+
+        <div class="hero-stats">
+          @for (stat of stats; track stat.label) {
+            <div class="stat-item">
+              <div class="stat-value">{{ stat.value }}</div>
+              <div class="stat-label">{{ stat.label }}</div>
+            </div>
+          }
+        </div>
+      </div>
+
+      <!-- Right Column: Single Card Fading In Slowly and Out Slowly (Wait 2s, Next Comes) -->
+      <div
+        class="hero-right"
+        (mouseenter)="setHover(true)"
+        (mouseleave)="setHover(false)"
+      >
+        <div class="showcase-container">
+          <!-- Top bar with capability badge and counter -->
+          <div class="showcase-topbar">
+            <div class="showcase-live-badge">
+              <span class="showcase-pulse"></span>
+              <span>Our Capabilities</span>
+            </div>
+            <div class="showcase-counter">
+              <span>0{{ currentServiceIndex + 1 }}</span>
+              <span class="counter-divider">/</span>
+              <span>{{ services.length }}</span>
+            </div>
+          </div>
+
+          <!-- Single Card Fading In Slowly and Out Slowly -->
+          <div class="showcase-card-stage">
+            <div
+              class="service-showcase-card"
+              [class.card-fading-out]="fadeState === 'fade-out'"
+              [class.card-fading-in]="fadeState === 'fade-in'"
+              [id]="'hero-card-' + currentService.id"
+            >
+              <div class="showcase-icon-wrap">
+                <i [class]="currentService.icon"></i>
+              </div>
+
+              <div class="showcase-body">
+                <div class="showcase-service-number">SERVICE {{ currentServiceIndex + 1 }}</div>
+                <h3 class="showcase-title">{{ currentService.title }}</h3>
+                <p class="showcase-desc">{{ currentService.desc }}</p>
+
+                <div class="showcase-tags">
+                  @for (tag of currentService.tags; track tag) {
+                    <span class="showcase-tag">{{ tag }}</span>
+                  }
+                </div>
+
+                <div class="showcase-action">
+                  <button
+                    class="btn btn-primary btn-sm showcase-inquire-btn"
+                    (click)="openServiceInquiry(currentService)"
+                    [id]="'hero-inquire-' + currentService.id"
+                  >
+                    <i class="fa-solid fa-paper-plane"></i> Inquire About This Service
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Navigation and Progress Dots -->
+          <div class="showcase-controls">
+            <button
+              class="showcase-nav-btn"
+              (click)="prevService()"
+              title="Previous Service"
+              aria-label="Previous Service"
+            >
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="showcase-dots">
+              @for (svc of services; let i = $index; track svc.id) {
+                <button
+                  class="showcase-dot"
+                  [class.active]="i === currentServiceIndex"
+                  (click)="goToService(i)"
+                  [attr.aria-label]="'Go to ' + svc.title"
+                ></button>
+              }
+            </div>
+
+            <button
+              class="showcase-nav-btn"
+              (click)="nextService()"
+              title="Next Service"
+              aria-label="Next Service"
+            >
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 

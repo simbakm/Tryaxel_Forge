@@ -54,6 +54,20 @@
             <h3 class="project-title">{{ project.title }}</h3>
             <p class="project-desc">{{ project.desc }}</p>
 
+            @if (project.features && project.features.length) {
+              <div class="project-features">
+                <div class="features-label"><i class="fa-solid fa-list-check"></i> Key Features & Capabilities:</div>
+                <ul class="features-list">
+                  @for (feat of project.features; track feat) {
+                    <li>
+                      <i class="fa-solid fa-circle-check feature-icon"></i>
+                      <span>{{ feat }}</span>
+                    </li>
+                  }
+                </ul>
+              </div>
+            }
+
             <div class="project-tags">
               @for (tag of project.tags; track tag) {
                 <span class="project-tag">{{ tag }}</span>

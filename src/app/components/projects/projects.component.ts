@@ -12,6 +12,7 @@ interface Project {
   url?: string;
   imageUrl?: string;
   id: string;
+  features?: string[];
 }
 
 @Component({
@@ -26,6 +27,16 @@ export class ProjectsComponent {
 
   projects: Project[] = [
     {
+      title: 'Tryaxel Forge Corporate Website',
+      client: 'Tryaxel Forge (Official)',
+      desc: 'Our premier official corporate web application showcasing our complete digital solutions catalog, active products, company portfolio, and live tech services. Fully designed, developed and live in production.',
+      status: 'completed',
+      tags: ['Website', 'Angular', 'Corporate', 'Web App', 'Live Production'],
+      url: 'https://www.tryaxelforge.co.zw/',
+      imageUrl: 'assets/images/logo.png',
+      id: 'proj-tryaxelforge'
+    },
+    {
       title: 'Aeternusworks Construction Website',
       client: 'Aeternusworks',
       desc: 'A full construction company website and web application showcasing services, completed projects, and enabling clients to connect with the team seamlessly. Successfully designed, developed and deployed.',
@@ -36,12 +47,22 @@ export class ProjectsComponent {
       id: 'proj-aeternusworks'
     },
     {
-      title: 'Tryaxel Forge Corporate Website',
-      client: 'Internal',
-      desc: 'Our own corporate website showcasing all services, products, and team. Built with Angular and featuring cutting-edge design with AI integrations.',
+      title: 'eLearner Junior – Offline E-Learning Platform for Primary Learners',
+      client: 'Zimbabwe Primary Education / EdTech',
+      desc: 'A mobile-based homework pack and e-learning application designed to support Zimbabwean primary school learners through interactive, curriculum-aligned learning and examination preparation.',
       status: 'ongoing',
-      tags: ['Angular', 'Corporate', 'Branding'],
-      id: 'proj-tryaxelforge'
+      tags: ['Mobile App', 'Flutter', 'SQLite', 'Spring Boot', 'Angular', 'PostgreSQL', 'Cloudflare R2'],
+      id: 'proj-elearner',
+      features: [
+        'Multi-Grade Learning: Supports multiple primary school grades, each with six subjects and indigenous language selection (Shona, Ndebele, Tonga, etc.).',
+        'Offline-First Architecture: Flutter application using SQLite for locally stored questions, diagrams, and learning resources.',
+        'Intelligent Quiz Engine: Randomized question selection, shuffled answer options, automatic answer mapping, and instant explanations.',
+        'Adaptive Learning Algorithm: Tracks learner performance and identifies weak concepts to prioritize revision.',
+        'Learning Analytics: Calculates topic, unit, and concept mastery, performance trends, and learning progress.',
+        'Gamification: Daily challenges, achievement badges, points, and learning streaks to encourage engagement.',
+        'Content Distribution: Versioned, grade-specific SQLite packages distributed through Cloudflare R2.',
+        'Centralized Management: Spring Boot, Angular, and PostgreSQL backend for question management, CSV imports, content publishing, subscriptions, and device-bound activation codes (4, 8, and 12 months).'
+      ]
     },
     {
       title: 'Fundaxool — AI WhatsApp Assistant',
@@ -79,7 +100,7 @@ export class ProjectsComponent {
 
   openInquiry(project: Project) {
     const subject = encodeURIComponent(`Project Inquiry: ${project.title}`);
-    const body = encodeURIComponent(`Hello Tryaxel Forge,\n\nI am interested in a similar project: ${project.title}.\n\nPlease contact me with more details.\n\nThank you.`);
+    const body = encodeURIComponent(`Hello Tryaxel Forge,\n\nI am interested in learning more about: ${project.title}.\n\nPlease contact me with more details.\n\nThank you.`);
     window.open(`mailto:info@tryaxelforge.co.zw?subject=${subject}&body=${body}`, '_blank');
   }
 

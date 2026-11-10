@@ -1,0 +1,11 @@
+# Robots.txt for Tryaxel Forge
+# https://www.tryaxelforge.co.zw/
+
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/
+
+# Sitemap
+Sitemap: https://www.tryaxelforge.co.zw/sitemap.xml
+

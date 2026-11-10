@@ -15,9 +15,17 @@
 
         <div class="contact-methods">
           @for (method of contactMethods; track method.label) {
-            <a class="contact-method" [href]="method.href" target="_blank" rel="noopener" [id]="'contact-' + method.label.toLowerCase().replace(' ', '-')">
-              <div class="contact-method-icon">{{ method.icon }}</div>
-              <div>
+            <a
+              class="contact-method"
+              [href]="method.href"
+              [target]="method.target || '_self'"
+              rel="noopener"
+              [id]="'contact-' + method.label.toLowerCase().replace(' ', '-').replace('/', '-')"
+            >
+              <div class="contact-method-icon" [style.color]="method.color || 'var(--orange)'">
+                <i [class]="method.iconClass"></i>
+              </div>
+              <div class="contact-method-text">
                 <div class="contact-method-label">{{ method.label }}</div>
                 <div class="contact-method-value">{{ method.value }}</div>
               </div>
@@ -119,6 +127,42 @@
             </button>
           </form>
         }
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="contact-map-card card" id="contact-map-section">
+      <div class="map-card-header">
+        <div class="map-header-left">
+          <div class="map-pin-icon">
+            <i class="fa-solid fa-map-location-dot"></i>
+          </div>
+          <div>
+            <h3 class="map-card-title">Our Physical Location</h3>
+            <p class="map-card-subtitle">Stand Number 6, Village 16A, Wenimbe, Marondera, Zimbabwe</p>
+          </div>
+        </div>
+        <a
+          href="https://maps.google.com/?q=Wenimbe%20Marondera%20Zimbabwe"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-outline btn-sm map-directions-btn"
+          id="map-directions-btn"
+        >
+          <i class="fa-solid fa-diamond-turn-right"></i> Open In Google Maps
+        </a>
+      </div>
+      <div class="map-embed-container">
+        <iframe
+          src="https://maps.google.com/maps?q=Wenimbe%2C%20Marondera%2C%20Zimbabwe&t=&z=13&ie=UTF8&iwloc=&output=embed"
+          width="100%"
+          height="380"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Tryaxel Forge Location - Stand Number 6, Village 16A, Wenimbe, Marondera">
+        </iframe>
       </div>
     </div>
   </div>

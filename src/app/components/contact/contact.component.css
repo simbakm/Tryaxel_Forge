@@ -55,9 +55,26 @@
 }
 
 .contact-method-icon {
-  font-size: 1.5rem;
-  width: 40px;
+  font-size: 1.35rem;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-silver);
   flex-shrink: 0;
+  transition: var(--transition);
+}
+
+.contact-method:hover .contact-method-icon {
+  transform: scale(1.1);
+}
+
+.contact-method-text {
+  overflow: hidden;
+  word-break: break-word;
 }
 
 .contact-method-label {
@@ -172,15 +189,103 @@ select.form-control option {
   font-size: 0.95rem;
 }
 
+/* Map Section */
+.contact-map-card {
+  margin-top: 3rem;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.map-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+}
+
+.map-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.map-pin-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: rgba(255, 107, 0, 0.12);
+  border: 1px solid rgba(255, 107, 0, 0.3);
+  color: var(--orange);
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.map-card-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.map-card-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.map-directions-btn {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.map-embed-container {
+  width: 100%;
+  height: 380px;
+  background: #111;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-embed-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  filter: contrast(102%) brightness(95%);
+}
+
 /* Responsive */
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
+  }
+
+  .map-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .map-directions-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 600px) {
   .form-row {
     grid-template-columns: 1fr;
+  }
+
+  .map-embed-container {
+    height: 300px;
   }
 }
